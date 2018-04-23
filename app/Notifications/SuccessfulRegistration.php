@@ -11,14 +11,16 @@ class SuccessfulRegistration extends Notification
 {
     use Queueable;
 
+    public $password;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($password)
     {
-        //
+        $this->password = $password;
     }
 
     /**
@@ -41,8 +43,10 @@ class SuccessfulRegistration extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->greeting('Welcome to NEWSIM Reservation System!')
+                    ->line('Your username is <your-employee-id>')
+                    ->line('and your password is ' . $password)
+                    ->action('Login your account here', url('/'))
                     ->line('Thank you for using our application!');
     }
 
