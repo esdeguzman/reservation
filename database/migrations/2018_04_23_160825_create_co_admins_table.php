@@ -16,6 +16,10 @@ class CreateCoAdminsTable extends Migration
         Schema::create('co_admins', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('role_id');
+            $table->unsignedInteger('branch_id');
+            $table->unsignedInteger('department_id');
+            $table->unsignedInteger('position_id');
             $table->string('employee_id');
             $table->string('first_name');
             $table->string('last_name');
