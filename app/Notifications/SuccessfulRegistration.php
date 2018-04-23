@@ -45,7 +45,7 @@ class SuccessfulRegistration extends Notification
         return (new MailMessage)
                     ->greeting('Welcome to NEWSIM Reservation System!')
                     ->line('Your username is <your-employee-id>')
-                    ->line('and your password is ' . $password)
+                    ->line('and your password is ' . $this->password)
                     ->action('Login your account here', url('/'))
                     ->line('Thank you for using our application!');
     }
