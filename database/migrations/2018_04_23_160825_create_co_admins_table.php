@@ -19,6 +19,7 @@ class CreateCoAdminsTable extends Migration
             $table->string('employee_id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email');
             $table->string('added_by');
             $table->SoftDeletes();
             $table->timestamps();
