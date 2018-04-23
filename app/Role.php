@@ -10,6 +10,6 @@ class Role extends Model
     use SoftDeletes;
 
     public function coAdmins() {
-        return $this->belongsTOMany(CoAdmin::class, 'co_admin_id');
+        return $this->hasMany(CoAdmin::class);
     }
 }

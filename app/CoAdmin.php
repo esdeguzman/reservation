@@ -14,18 +14,18 @@ class CoAdmin extends Model
     }
 
     public function role() {
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     public function department() {
-        return $this->hasOne(Department::class);
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     public function branch() {
-        return $this->hasOne(Branch::class);
+        return $this->belongsTo(Branch::class, 'branch_id');
     }
 
     public function position() {
-        return $this->hasOne(Position::class);
+        return $this->belongsTo(Position::class, 'position_id');
     }
 }
