@@ -76,10 +76,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $password = str_random(6);
+
+        $user = User::create([
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'username' => $data['employee_id'],
+            'password' => bcrypt($password),
         ]);
+
+        $coAdmin = \App\CoAdmin::create([
+            'user_id' => $user->id,
+            'role_id' => $data['role_id'],
+            'department_id' => $data['department_id'],
+            'position_id' => $data['position_id'],
+            'employee_id' => $data['employee_id'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+        ]);
+
+        $user->notify(new \App\Notifications\SuccessfulRegistration($password));
+
+        return $user;
     }
 }
