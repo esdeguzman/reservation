@@ -60,6 +60,14 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'employee_id' => 'required|unique:co_admins',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'branch_id' => 'required',
+            'department_id' => 'required',
+            'position_id' => 'required',
+            'role_id' => 'required',
+            'email' => 'required|email|max:255|unique:users'
         ]);
     }
 
