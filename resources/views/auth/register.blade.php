@@ -59,6 +59,9 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="branch_id">
                                     <option value="" hidden>Select Branch</option>
+                                    @foreach ($branches as $branch)
+                                        <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
+                                    @endforeach
                                 </select>
 
                                 @if ($errors->has('branch_id'))
@@ -75,6 +78,9 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="department_id">
                                     <option value="" hidden>Select Department</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>{{ $department->name }}</option>
+                                    @endforeach
                                 </select>
 
                                 @if ($errors->has('department_id'))
@@ -91,11 +97,33 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="position_id">
                                     <option value="" hidden>Select Position</option>
+                                    @foreach ($positions as $position)
+                                        <option value="{{ $position->id }}" {{ old('position_id') == $position->id ? 'selected' : '' }}>{{ $position->name }}</option>
+                                    @endforeach
                                 </select>
 
                                 @if ($errors->has('position_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('position_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Role</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="role_id">
+                                    <option value="" hidden>Select Role</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('role_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
