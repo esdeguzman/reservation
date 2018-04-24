@@ -39,6 +39,15 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm() {
+        $branches = \App\Branch::all();
+        $departments = \App\Department::all();
+        $positions = \App\Position::all();
+        $roles = \App\Role::all();
+
+        return view('auth.register', compact('branches', 'departments', 'positions', 'roles'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
