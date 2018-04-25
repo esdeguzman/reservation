@@ -18,4 +18,8 @@ class Schedule extends Model
     public function branchCourse() {
         return $this->belongsTo(BranchCourse::class);
     }
+
+    public function promo() {
+        return $this->hasOne(Promo::class);
+    }
 }
