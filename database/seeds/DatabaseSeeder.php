@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentsTableSeeder::class);
         $this->call(PositionsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
+        $this->call(CoursesTableSeeder::class);
+        $this->call(BranchCoursesTableSeeder::class);
 
         $user = \App\User::create([
             'email' => 'deguzman.esmeraldo@gmail.com',
