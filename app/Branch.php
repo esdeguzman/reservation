@@ -9,6 +9,8 @@ class Branch extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = [];
+
     public function coAdmins() {
         return $this->hasMany(CoAdmin::class);
     }
