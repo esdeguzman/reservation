@@ -18,6 +18,7 @@ class CreateBranchCoursesTable extends Migration
             $table->unsignedInteger('branch_id');
             $table->unsignedInteger('course_id');
             $table->unsignedInteger('added_by');
+            $table->decimal('price', 8, 2);
             $table->unsignedInteger('deleted_by')->nullable();
             $table->unique(['course_id', 'branch_id']);
             $table->softDeletes();
