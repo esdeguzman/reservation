@@ -17,6 +17,8 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->string('name');
+            $table->unsignedInteger('added_by');
+            $table->unsignedInteger('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
