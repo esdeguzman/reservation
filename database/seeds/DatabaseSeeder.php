@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CoursesTableSeeder::class);
         $this->call(BranchCoursesTableSeeder::class);
         $this->call(SchedulesTableSeeder::class);
+        $this->call(PromosTableSeeder::class);
 
         $user = \App\User::create([
             'email' => 'deguzman.esmeraldo@gmail.com',
