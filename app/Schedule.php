@@ -11,8 +11,12 @@ class Schedule extends Model
 
     protected $guarded = [];
 
-    public function coAdmin() {
-        return $this->belongsTo(CoAdmin::class);
+    public function addedBy() {
+        return $this->belongsTo(CoAdmin::class, 'added_by');
+    }
+
+    public function deletedBy() {
+        return $this->belongsTo(CoAdmin::class, 'deleted_by');
     }
 
     public function branchCourse() {
