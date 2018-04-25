@@ -12,7 +12,7 @@ class BranchCourse extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function branches() {
+    public function branch() {
         return $this->belongsTo(Branch::class);
     }
 }
