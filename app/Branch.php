@@ -12,4 +12,8 @@ class Branch extends Model
     public function coAdmins() {
         return $this->hasMany(CoAdmin::class);
     }
+
+    public function courses() {
+        return $this->hasMany(BranchCourse::class);
+    }
 }
