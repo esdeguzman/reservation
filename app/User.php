@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function deletedPromos() {
         return $this->hasMany(Promo::class, 'deleted_by');
     }
+
+    public function paymentConfirmations() {
+        return $this->hasMany(Reservation::class, 'payment_confirmed_by');
+    }
 }
