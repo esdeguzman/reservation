@@ -33,4 +33,12 @@ class User extends Authenticatable
     public function coAdmins() {
         return $this->hasMany(CoAdmin::class);
     }
+
+    public function addedBranchCourses() {
+        return $this->hasMany(BranchCourse::class, 'added_by');
+    }
+
+    public function deletedBranchCourses() {
+        return $this->hasMany(BranchCourse::class, 'deleted_by');
+    }
 }
