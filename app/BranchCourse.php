@@ -15,4 +15,8 @@ class BranchCourse extends Model
     public function branch() {
         return $this->belongsTo(Branch::class);
     }
+
+    public function schedules() {
+        return $this->hasMany(Schedule::class);
+    }
 }
