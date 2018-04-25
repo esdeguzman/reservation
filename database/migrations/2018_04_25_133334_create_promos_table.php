@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBranchCoursesTable extends Migration
+class CreatePromosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateBranchCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('branch_courses', function (Blueprint $table) {
+        Schema::create('promos', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('branch_id');
-            $table->unsignedInteger('course_id');
-            $table->unsignedInteger('added_by');
+            $table->unsignedInteger('schedule_id');
+            $table->decimal('discount', 3, 2);
             $table->decimal('price', 8, 2);
+            $table->unsignedInteger('added_by');
             $table->unsignedInteger('deleted_by')->nullable();
-            $table->unique(['course_id', 'branch_id']);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ class CreateBranchCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branch_courses');
+        Schema::dropIfExists('promos');
     }
 }

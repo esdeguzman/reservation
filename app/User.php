@@ -41,4 +41,12 @@ class User extends Authenticatable
     public function deletedBranchCourses() {
         return $this->hasMany(BranchCourse::class, 'deleted_by');
     }
+
+    public function addedPromos() {
+        return $this->hasMany(Promo::class, 'added_by');
+    }
+
+    public function deletedPromos() {
+        return $this->hasMany(Promo::class, 'deleted_by');
+    }
 }
