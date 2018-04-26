@@ -25,7 +25,7 @@ class CreateSchedulesTable extends Migration
             $table->string('end_time');
             $table->unsignedSmallInteger('minutes');
             $table->unsignedTinyInteger('learning_station');
-            $table->unique(['branch_course_id', 'start_date', 'end_date', 'learning_station'], 'course_duration_ls');
+            $table->unique(['branch_course_id', 'start_date', 'end_date', 'learning_station'], 'cls');
             $table->softDeletes();
             $table->timestamps();
         });
