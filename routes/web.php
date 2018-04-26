@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('sample', function() {
-    return \App\User::with('admin')->where('id', 4)->get();
+    return auth()->user();
 });
 
 Auth::routes();
