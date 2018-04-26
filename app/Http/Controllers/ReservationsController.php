@@ -28,7 +28,7 @@ class ReservationsController extends Controller
 
         Auth::loginUsingId($user->id);
 
-        return User::with('trainee')->where('id', $user->id)->get();
+        return User::with('trainees')->where('id', $user->id)->first();
 
     }
 }
