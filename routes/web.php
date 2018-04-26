@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('sample', function() {
+    return \App\User::with('admin')->where('id', 4)->get();
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('reservations', 'ReservationsController');
