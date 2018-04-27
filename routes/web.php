@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('sample/{user}', function(\App\User $user) {
+Route::get('sample/{user}', function($userId) {
+    $user = \App\User::find($userId);
     if(\Illuminate\Support\Facades\Auth::check($user)) {
-        return $user->with('trainees')->first();
+        return $user->trainees->where('user_id', $userId)->first();
     } else {
         return 'logged out';
     }
