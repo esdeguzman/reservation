@@ -14,4 +14,10 @@ class TraineesController extends Controller
             return User::with('trainees')->where('id', \auth()->user()->id)->first();
         }
     }
+
+    public function logout() {
+        \auth()->logout();
+
+        return 'User has been logged out!';
+    }
 }
