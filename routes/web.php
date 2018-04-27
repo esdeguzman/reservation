@@ -23,4 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/trainees/login', 'TraineesController@login');
+
 Route::resource('reservations', 'ReservationsController');
+Route::resource('trainees', 'TraineesController');
