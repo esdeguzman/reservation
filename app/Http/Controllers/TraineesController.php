@@ -15,8 +15,8 @@ class TraineesController extends Controller
         }
     }
 
-    public function logout() {
-        \auth()->logout();
+    public function logout(User $user) {
+        Auth::logout($user);
 
         return 'User has been logged out!';
     }

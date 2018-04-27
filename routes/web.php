@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('sample', function() {
-    return auth()->user();
+Route::get('sample/{user}', function(\App\User $user) {
+    if(\Illuminate\Support\Facades\Auth::check($user)) {
+        return $user->withCount('trainees')->first();
+    } else {
+        return 'logged out';
+    }
 });
 
 Auth::routes();
@@ -24,7 +28,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/trainees/login', 'TraineesController@login');
-Route::post('/trainees/logout', 'TraineesController@logout');
+Route::post('/trainees/logout/{user}', 'TraineesController@logout');
 
 Route::resource('reservations', 'ReservationsController');
 Route::resource('trainees', 'TraineesController');
