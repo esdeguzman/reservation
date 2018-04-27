@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('sample/{user}', function(\App\User $user) {
     if(\Illuminate\Support\Facades\Auth::check($user)) {
-        return $user->withCount('trainees')->first();
+        return $user->with('trainees')->first();
     } else {
         return 'logged out';
     }
