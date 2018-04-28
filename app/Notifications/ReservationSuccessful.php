@@ -51,7 +51,8 @@ class ReservationSuccessful extends Notification
                     ->line('Please be informed that this reservation will be null and void if not fully paid '
                                 . '24 hrs after is has been requested. Below are the information you need in order '
                                 . 'to pay this reservation and secure your seat.')
-                    ->line('Please pay to any BPI branch using account name: NEWSIM + (branch)')
+                    ->line('Reservation code: ' . $this->reservation->code)
+                    ->line('Please pay to any BPI branch using account name: NEWSIM + (branch name)')
                     ->line('Account Number: 000-0000-0000-0000')
                     ->line('Amount : P 5,000.00');
     }
