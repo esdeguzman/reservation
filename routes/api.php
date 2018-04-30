@@ -35,5 +35,26 @@ Route::get('/reserve/{traineeId}/{scheduleId}', function($traineeId, $scheduleId
 
     $user->notify(new \App\Notifications\ReservationSuccessful($reservation));
 
-    return 'Schedule successfully reserved!';
+    $branchCourse = \App\BranchCourse::with('course')->where('course_id', $schedule->branchCourse->course_id)->first();
+
+    $reservation->branch_name = $branchCourse->branch->name;
+    $reservation->course_name = $branchCourse->course->name;
+    $reservation->created = Carbon\Carbon::parse($reservation->created_at)->toFormattedDateString();
+    $reservation->will_expire = Carbon\Carbon::parse($reservation->created_at)->addDay(1)->toFormattedDateString();
+
+    return $reservation;
+});
+
+Route::get('/reservations/{userId}', function($userId) {
+    $user = \App\User::with('trainees')->where('id', $userId)->first();
+    $reservation = \App\Reservation::where('trainee_id', $user->trainees->first()->id)->first();
+    $schedule = \App\Schedule::with('branchCourse')->where('id', $reservation->schedule_id)->first();
+    $branchCourse = \App\BranchCourse::with('course')->where('course_id', $schedule->branchCourse->course_id)->first();
+
+    $reservation->branch_name = $branchCourse->branch->name;
+    $reservation->course_name = $branchCourse->course->name;
+    $reservation->created = Carbon\Carbon::parse($reservation->created_at)->toFormattedDateString();
+    $reservation->will_expire = Carbon\Carbon::parse($reservation->created_at)->addDay(1)->toFormattedDateString();
+
+    return $reservation;
 });

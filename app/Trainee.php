@@ -10,4 +10,8 @@ class Trainee extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
+    public function reservations() {
+        return $this->hasMany(Reservation::class);
+    }
 }
